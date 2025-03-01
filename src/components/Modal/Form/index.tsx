@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import Button from "../../Button"
-import { IButtonProps } from "../../interfaces/inputs";
+import { IButtonProps } from "../../../interfaces/inputs";
 
 interface IProps {
     setOpenModal : (value:boolean) => void;
