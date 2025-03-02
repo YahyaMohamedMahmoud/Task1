@@ -2,9 +2,11 @@ import { Star } from "lucide-react";
 
 interface IProps {
   rating: number;
-  star: [1, 2, 3, 4, 5];
+  star: number[];
 }
-const ProductRate = ({ rating, star }: IProps) => {
+const ProductRate = ({ rating, star = [1, 2, 3, 4, 5] }: IProps) => {
+  console.log(star);
+  
   return (
     <>
       <div className="cardRating py-3">

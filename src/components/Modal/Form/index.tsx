@@ -1,47 +1,44 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import Button from "../../Button"
+import Button from "../../Button";
 import { IButtonProps } from "../../../interfaces/inputs";
 
 interface IProps {
-    setOpenModal : (value:boolean) => void;
+  setOpenModal: (value: boolean) => void;
 }
 
-const FormData:IButtonProps = {
-    title:'',
-    price:'',
-    description:'',
-    category:''
-}
+const FormData: IButtonProps = {
+  title: "",
+  price: "",
+  description: "",
+  category: "",
+};
 
+const Form = ({ setOpenModal }: IProps) => {
+  const [inputsData, setInputsData] = useState<IButtonProps>(FormData);
 
-const Form = ({setOpenModal}:IProps) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setInputsData({
+      ...inputsData,
+      [name]: value,
+    });
+  };
 
-    const [inputsData , setInputsData] = useState<IButtonProps>(FormData)
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setInputsData({
-            ...inputsData,
-            [name]: value
-        })
-        
-      };
-
-      const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log(inputsData);
-        setInputsData(FormData);
-        setOpenModal(false)
-      }
-
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(inputsData);
+    setInputsData(FormData);
+    setOpenModal(false);
+  };
 
   return (
     <>
-    
-    <form className="space-y-4" onSubmit={handleSubmit}>
+      <form className="space-y-4" onSubmit={handleSubmit}>
         {/* Title */}
         <div>
-          <label className="block text-gray-700 font-medium" htmlFor="title">Title</label>
+          <label className="block text-gray-700 font-medium" htmlFor="title">
+            Title
+          </label>
           <input
             type="text"
             placeholder="Enter Product Title"
@@ -55,7 +52,12 @@ const Form = ({setOpenModal}:IProps) => {
 
         {/* Description */}
         <div>
-          <label className="block text-gray-700 font-medium" htmlFor="description">Description</label>
+          <label
+            className="block text-gray-700 font-medium"
+            htmlFor="description"
+          >
+            Description
+          </label>
           <input
             type="text"
             placeholder="Enter Product Description"
@@ -69,7 +71,9 @@ const Form = ({setOpenModal}:IProps) => {
 
         {/* Category */}
         <div>
-          <label className="block text-gray-700 font-medium" htmlFor="category">Category</label>
+          <label className="block text-gray-700 font-medium" htmlFor="category">
+            Category
+          </label>
           <input
             type="text"
             placeholder="Enter Product Category"
@@ -83,7 +87,9 @@ const Form = ({setOpenModal}:IProps) => {
 
         {/* Price */}
         <div>
-          <label className="block text-gray-700 font-medium" htmlFor="price">Price</label>
+          <label className="block text-gray-700 font-medium" htmlFor="price">
+            Price
+          </label>
           <input
             type="number"
             placeholder="Enter Product price"
@@ -96,20 +102,20 @@ const Form = ({setOpenModal}:IProps) => {
         </div>
 
         <div className="flex justify-end items-center space-x-4">
-          <Button intent={"secondary"} size={"sm"} onClick={() => setOpenModal(false)}>
+          <Button
+            intent={"secondary"}
+            size={"sm"}
+            onClick={() => setOpenModal(false)}
+          >
             Close
           </Button>
           <Button intent={"primary"} size={"sm"} type="submit">
             Add Product
           </Button>
-         
         </div>
-        
       </form>
-
-
     </>
-  )
-}
+  );
+};
 
-export default Form
+export default Form;
