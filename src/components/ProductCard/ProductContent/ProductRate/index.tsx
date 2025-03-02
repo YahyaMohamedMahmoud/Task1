@@ -4,9 +4,7 @@ interface IProps {
   rating: number;
   star: number[];
 }
-const ProductRate = ({ rating, star = [1, 2, 3, 4, 5] }: IProps) => {
-  console.log(star);
-  
+const ProductRate = ({ rating, star = [1, 2, 3, 4, 5] }: IProps) => {  
   return (
     <>
       <div className="cardRating py-3">
